@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ml">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Photography Stories by PD</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Manjari:wght@700&display=swap" rel="stylesheet" />
+
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      scroll-behavior: smooth;
+      overflow: hidden;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #eee;
+    }
+
+    .snap-container {
+      height: 100vh;
+      overflow-y: scroll;
+      scroll-snap-type: y mandatory;
+      scroll-behavior: smooth;
+    }
+
+    .hero-section,
+    .hero-section-2,
+    .hero-section-side-side,
+    .magazine-section {
+      scroll-snap-align: start;
+    }
+
+    .hero-section {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+      background-color: #000;
+      margin-top: 5%;
+    }
+
+    .hero-section img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 1;
+    }
+
+    .hero-section-2 {
+      margin-top: 5%;
+      position: relative;
+      width: 100%;
+      height: 80vh;
+      overflow: hidden;
+      background-color: white;
+    }
+
+    .hero-section-2 img {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      z-index: 1;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 2;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.4);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .hero-text-wrapper {
+      font-family: 'Manjari', sans-serif;
+      color: white;
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+    }
+
+    .hero-text-main {
+      font-size: 10vw;
+      margin: 0;
+      margin-bottom: 10%;
+    }
+
+    .hero-text-sub {
+      font-size: 5vw;
+      margin-top: 1rem;
+    }
+
+    .magazine-section {
+      display: flex;
+      flex-direction: row;
+      align-items: stretch;
+      height: 100vh;
+      background: #fff;
+      color: #222;
+    }
+
+    .magazine-text {
+      flex: 1;
+      padding: 4rem 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      background: #f7f7f7;
+    }
+
+    .magazine-image {
+      flex: 1;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .magazine-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .image-row {
+      display: flex;
+      align-items: flex-end;
+      margin: 0;
+      padding: 0;
+    }
+
+    .hero-section-side-side {
+      flex: 1;
+      height: 80vh;
+      background-color: white;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      overflow: hidden;
+      padding: 0;
+      margin: 0;
+      margin-top: 10%;
+    }
+
+    .hero-section-side-side img {
+      width: 100%;
+      height: auto;
+      max-height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    @media (max-width: 600px) {
+      .hero-section {
+        height: 80vh;
+      }
+
+      .hero-text-main {
+        font-size: 12vw;
+      }
+
+      .hero-text-sub {
+        font-size: 6vw;
+      }
+
+      .magazine-section {
+        flex-direction: column;
+      }
+
+      .magazine-text, .magazine-image {
+        flex: none;
+        width: 100%;
+        height: 50vh;
+      }
+
+      .magazine-text {
+        padding: 2rem 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="snap-container">
+    <section class="hero-section">
+      <img src="images/DSC00173-2.jpg" alt="Hero Image" />
+      <div class="overlay">
+        <div class="hero-text-wrapper">
+          <div class="hero-text-main">ത്രിശ്ശൂർ പൂരം</div>
+          <div class="hero-text-sub">Thrissur Pooram</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="magazine-section">
+      <div class="magazine-text">
+  <h2>Where It All Began</h2>
+    <p>
+    In the heart of Kerala, there lived a visionary ruler — Sakthan Thampuran — whose dream was to unite the people of Thrissur in a festival like no other. In the late 18th century, when smaller temples were barred from participating in the Arattupuzha Pooram, he brought them together to form a celebration of their own: Thrissur Pooram.
+  </p>
+  <p>
+    What followed was not just an act of inclusion, but the birth of a grand tradition. Elephants adorned in gold, rhythmic percussion echoing through the sky, and thousands gathered with devotion — Thrissur Pooram became the heartbeat of a people.
+  </p>
+  <p>
+    More than two centuries later, the festival still rises each year like a living legend. It is where gods meet under umbrellas of silk, where culture dances through the streets, and where even the sky seems to tremble with joy.
+  </p>
+</div>
+      <div class="magazine-image">
+        <img src="images/DSC00182.jpg" alt="Hero Image" />
+      </div>
+    </section>
+
+    <section class="hero-section-2"><img src="images/DSC00191.jpg" alt="Hero Image" /></section>
+    <section class="hero-section-2"><img src="images/DSC00201.jpg" alt="Hero Image" /></section>
+    <section class="hero-section"><img src="images/DSC00239.jpg" alt="Hero Image" /></section>
+    <section class="hero-section-2"><img src="images/DSC00419-3.jpg" alt="Hero Image" /></section>
+
+    <div class="image-row">
+      <section class="hero-section-side-side"><img src="images/DSC00278.jpg" alt="Hero Image 1" /></section>
+      <section class="hero-section-side-side"><img src="images/DSC00218.jpg" alt="Hero Image 2" /></section>
+    </div>
+
+    <section class="hero-section-2"><img src="images/DSC00509.jpg" alt="Hero Image" /></section>
+    <section class="hero-section"><img src="images/DSC00486-no grain.jpg" alt="Hero Image" /></section>
+    <section class="hero-section-2"><img src="images/IMG_1251.jpg" alt="Hero Image" /></section>
+
+    <div class="image-row">
+      <section class="hero-section-side-side"><img src="images/IMG_1182.jpg" alt="Hero Image 1" /></section>
+      <section class="hero-section-side-side"><img src="images/DSC00610.jpg" alt="Hero Image 2" /></section>
+    </div>
+
+    <section class="hero-section-2"><img src="images/DSC00589.jpg" alt="Hero Image" /></section>
+    <section class="hero-section-2"><img src="images/DSC00300-2.jpg" alt="Hero Image" /></section>
+
+      <p>
+    @priyadharshanS
+  </p>
+
+  </main>
+</body>
+</html>
