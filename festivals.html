@@ -398,43 +398,24 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            const allImages = Array.from(document.querySelectorAll('img[data-src]'));
+            // Get all images with data-src (after the first 3 preloaded)
+            const lazyImages = Array.from(document.querySelectorAll('img[data-src]'));
 
+            // Function to load one image
             function loadImage(img) {
                 const src = img.dataset.src;
                 if (!src) return;
-                const temp = new Image();
-                temp.src = src;
-                temp.onload = () => {
-                    img.src = src;
-                    img.removeAttribute('data-src');
-                };
+                img.src = src;
+                img.removeAttribute('data-src');
             }
 
-            function loadNextFew(currentIndex, count = 2) {
-                for (let i = 1; i <= count; i++) {
-                    const next = allImages[currentIndex + i];
-                    if (next && next.dataset.src) {
-                        loadImage(next);
-                    }
-                }
-            }
-
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const img = entry.target;
-                        const index = allImages.indexOf(img);
-                        loadImage(img);
-                        loadNextFew(index); // 👈 preload next 2
-                        observer.unobserve(img);
-                    }
-                });
-            }, { rootMargin: "400px 0px" }); // start a bit earlier
-
-            allImages.forEach(img => observer.observe(img));
+            // Start loading all lazy images immediately after first paint
+            window.requestIdleCallback
+                ? requestIdleCallback(() => lazyImages.forEach(loadImage))
+                : setTimeout(() => lazyImages.forEach(loadImage), 200);
         });
     </script>
+
 
 
 </body>
