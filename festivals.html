@@ -6,6 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Photography Stories by PD</title>
 
+    <meta name="description"
+        content="Photojournalism stories across India by Priyadharshan — exploring culture, rituals, and everyday life.">
+    <meta name="author" content="Priyadharshan S">
+    <meta property="og:title" content="Photography Stories by PD">
+    <meta property="og:image" content="assets/DSC09908-25.webp">
+    <meta property="og:type" content="website">
+    <meta property="og:description" content="A visual journey through India's festivals, rituals, and life.">
+
     <link rel="preload" as="image" href="assets/DSC09908-25.webp">
     <link rel="preload" as="image" href="assets/where-it-all-began.webp">
     <link rel="preload" as="image" href="assets/DSC09910-25.webp">
@@ -48,20 +56,6 @@
             padding-right: 20%;
         }
 
-        .frame-border {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            /* border-left: 2mm solid; */
-            /* border-right: 2mm solid; */
-            /* choose #fff if you want white frame */
-            z-index: 1000;
-            pointer-events: none;
-            /* allow scrolling/clicks through it */
-        }
-
         .snap-container {
             width: 100%;
             height: 100%;
@@ -72,20 +66,18 @@
         .hero-section {
             position: relative;
             width: 100%;
-            height: 90vh;
             overflow: hidden;
-            /* background-color: #000; */
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .hero-section img {
-            position: absolute;
-            top: 0;
-            left: 0;
             width: 100%;
-            height: 100%;
+            height: auto;
             object-fit: contain;
-            /* filter: brightness(0.9) contrast(1.1); */
-            /* transition: transform 2s ease; */
+            display: block;
         }
 
         /* .hero-section:hover img {
@@ -192,6 +184,38 @@
         /* .hero-section-side-side:hover img {
             transform: scale(1.05);
         } */
+        .photo-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem auto;
+            width: 100%;
+            /* max-width: 1400px; */
+            /* background-color: #000; */
+            /* optional - matches your site's dark theme */
+            /* padding: 1rem 0; */
+        }
+
+
+        .photo-grid img {
+            flex: 1 1 calc(25% - 1rem);
+            max-width: calc(25% - 1rem);
+            aspect-ratio: 4 / 3;
+            /* ✅ changed from 3/4 to 4/3 */
+            object-fit: cover;
+            border-radius: 4px;
+            transition: transform 0.5s ease, opacity 0.3s ease;
+            opacity: 0.95;
+        }
+
+        @media (max-width: 600px) {
+            .photo-grid img {
+                flex: 1 1 calc(50% - 1rem);
+                max-width: calc(50% - 1rem);
+            }
+        }
+
 
         footer {
             text-align: center;
@@ -239,7 +263,6 @@
                 height: auto;
             }
 
-
             .caption {
                 text-align: left;
                 padding-left: 5%;
@@ -255,7 +278,7 @@
     <main class="snap-container">
         <!-- Hero Section -->
         <section class="hero-section" style="height: 100vh;">
-            <img style="object-fit: cover; height: 100vh;" src="assets/DSC09908-25.webp" alt="Cover" />
+            <img style="object-fit: cover; height: 100vh;" src="assets/DSC09910-25.webp" alt="Cover" />
             <div class="overlay">
                 <div class="hero-text-wrapper">
                     <!-- <div class="hero-text-main">ത്രിശ്ശൂർ പൂരം</div> -->
@@ -266,42 +289,50 @@
         <br>
 
         <!-- Story Section -->
-        <section class="magazine-section">
+        <!-- <section class="magazine-section">
             <div class="magazine-text">
                 <h2>Where It All Began</h2>
-                <!-- <p>
-                    In the heart of Kerala, there lived a visionary ruler — Sakthan Thampuran — whose dream was to unite
-                    the people of Thrissur in a festival like no other.
-                </p>
-                <p>
-                    In the late 18th century, when smaller temples were barred from participating in the Arattupuzha
-                    Pooram, he brought them together to form a celebration of their own: Thrissur Pooram.
-                </p>
-                <p>
-                    Elephants adorned in gold, rhythmic percussion echoing through the sky, and thousands gathered in
-                    devotion — Thrissur Pooram became the heartbeat of a people. More than two centuries later, it still
-                    rises each year like a living legend.
-                </p> -->
                 <p> ⚠️ work in progress </p>
             </div>
             <div class="magazine-image">
                 <img src="assets/where-it-all-began.webp" alt="Cultural Festival" />
             </div>
         </section>
+        <br> -->
+
+
+        <!-- February -->
+        <section class="hero-section"><img src="assets/where-it-all-began.webp" alt="Cultural Moment Varansi" />
+        </section>
+        <p class="caption">Maha Kumbh, Prayagraj - February 2025 <br>
+
+            <!-- March -->
+
+        <div class="photo-grid">
+            <img src="assets/DSC09814-1.webp" alt="Small Image 1" />
+            <img src="assets/DSC09824-5.webp" alt="Small Image 2" />
+            <img src="assets/DSC09827-1.webp" alt="Small Image 3" />
+            <img src="assets/DSC09884-1.webp" alt="Small Image 4" />
+        </div>
         <br>
 
-        <!-- March -->
-
-        <section class="hero-section"><img src="assets/DSC09910-25.webp" alt="Cultural Moment Varansi" /></section>
+        <section class="hero-section"><img src="assets/DSC09908-25.webp" alt="Cultural Moment Varansi" /></section>
         <p class="caption">Masaan Ki Holi, Manikarnika Ghat, Varanasi — March 2025 <br>
             Devotees gather at Manikarnika Ghat — where the living
             celebrate Holi amidst the cremation grounds, honoring life and death as one continuum.
         </p>
         <br>
-        <!-- <section class="hero-section"><img data-src="assets/DSC_0690.webp" alt="Kundah Nandi" /></section>
-        <br> -->
+
 
         <section class="hero-section"><img data-src="assets/DSC09948-1-1.webp" alt="Cultural Moment Melur" /></section>
+        <br>
+
+        <div class="photo-grid">
+            <img src="assets/DSC00032-2.webp" alt="Small Image 1" />
+            <img src="assets/DSC00020-1.webp" alt="Small Image 2" />
+            <img src="assets/DSC00051-1.webp" alt="Small Image 3" />
+            <img src="assets/DSC09958-2.webp" alt="Small Image 4" />
+        </div>
         <br>
 
         <section class="hero-section"><img data-src="assets/IMG_2354-1.webp" alt="Cultural Moment Melur" /></section>
@@ -310,6 +341,13 @@
 
         <!-- May -->
         <section class="hero-section"><img data-src="assets/DSC00239.webp" alt="Trisshur Pooram Cover" /></section>
+        <br>
+        <div class="photo-grid">
+            <img src="assets/DSC00201.webp" alt="Small Image 1" />
+            <img src="assets/DSC00191.webp" alt="Small Image 2" />
+            <img src="assets/DSC00419-3.webp" alt="Small Image 3" />
+            <img src="assets/IMG_1251.webp" alt="Small Image 4" />
+        </div>
         <br>
         <section class="hero-section"><img data-src="assets/DSC00486-25.webp" alt="Trisshur Pooram Cover" /></section>
         <p class="caption">Pooram, Trisshur - May 2025</p>
@@ -432,8 +470,7 @@
 
         <!-- Footer -->
         <footer>
-            © 2025 Photography Stories by <a href="https://x.com/PriyadharshanS"
-                target="_blank">@priyadharshanS</a>
+            © 2025 Photography Stories by <a href="https://x.com/PriyadharshanS" target="_blank">@PriyadharshanS</a>
         </footer>
     </main>
 
