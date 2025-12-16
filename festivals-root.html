@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="ml">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Photography Stories by PD</title>
+
+    <meta name="description"
+        content="Photojournalism stories across India by Priyadharshan — exploring culture, rituals, and everyday life.">
+    <meta name="author" content="Priyadharshan S">
+    <meta property="og:title" content="Photography Stories by PD">
+    <meta property="og:image" content="assets/DSC09908-25.webp">
+    <meta property="og:type" content="website">
+    <meta property="og:description" content="A visual journey through India's festivals, rituals, and life.">
+
+    <link rel="preload" as="image" href="assets/DSC09908-25.webp">
+    <link rel="preload" as="image" href="assets/where-it-all-began.webp">
+    <link rel="preload" as="image" href="assets/DSC09910-25.webp">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Manjari:wght@700&display=swap" rel="stylesheet" />
+
+    <style>
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            scroll-behavior: smooth;
+            font-family: 'Manjari', sans-serif;
+            /* font-family: 'Great Vibes', cursive; */
+            color: #eee;
+            background-color: #ffffff;
+        }
+
+        .hero-text-sub {
+            font-family: 'Great Vibes', cursive;
+            font-size: 4vw;
+            margin-top: 0.5rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+
+        body {
+            overflow-x: hidden;
+        }
+
+        .caption {
+            text-align: left;
+            margin-bottom: 3em;
+            margin-top: 1%;
+            color: #a8a8a8;
+            padding-left: 30vh;
+            padding-right: 20%;
+        }
+
+        .snap-container {
+            width: 100%;
+            height: 100%;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        .hero-section {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-section img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            display: block;
+        }
+
+        /* .hero-section:hover img {
+            transform: scale(1.03);
+        } */
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 2;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .hero-text-wrapper {
+            color: white;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+        }
+
+        .hero-text-main {
+            font-size: 9vw;
+            font-family: 'Great Vibes', cursive;
+            margin: 0;
+        }
+
+        .magazine-section {
+            display: flex;
+            flex-direction: row;
+            align-items: stretch;
+            height: 100vh;
+            /* background: #fff; */
+            color: #222;
+        }
+
+        .magazine-text {
+            flex: 1;
+            padding: 4rem 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            /* background: #f7f7f7; */
+        }
+
+        .magazine-text h2 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #111;
+        }
+
+        .magazine-image {
+            flex: 1;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .magazine-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 1.5s ease;
+        }
+
+        /* .magazine-image:hover img {
+            transform: scale(1.05);
+        } */
+
+
+        .image-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: stretch;
+            background-color: #000;
+        }
+
+        .hero-section-side-side {
+            flex: 1;
+            height: 80vh;
+            background-color: #000;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            overflow: hidden;
+            margin: 0;
+        }
+
+        .hero-section-side-side img {
+            width: 100%;
+            height: 90vh;
+            object-fit: cover;
+            transition: transform 2s ease;
+        }
+
+        /* .hero-section-side-side:hover img {
+            transform: scale(1.05);
+        } */
+        .photo-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem auto;
+            width: 100%;
+            /* max-width: 1400px; */
+            /* background-color: #000; */
+            /* optional - matches your site's dark theme */
+            /* padding: 1rem 0; */
+        }
+
+
+        .photo-grid img {
+            flex: 1 1 calc(25% - 1rem);
+            max-width: calc(25% - 1rem);
+            aspect-ratio: 4 / 3;
+            /* ✅ changed from 3/4 to 4/3 */
+            object-fit: cover;
+            border-radius: 4px;
+            transition: transform 0.5s ease, opacity 0.3s ease;
+            opacity: 0.95;
+        }
+
+        @media (max-width: 600px) {
+            .photo-grid img {
+                flex: 1 1 calc(50% - 1rem);
+                max-width: calc(50% - 1rem);
+            }
+        }
+
+
+        footer {
+            text-align: center;
+            color: #999;
+            padding: 2rem 0;
+            background-color: #000;
+            font-size: 1rem;
+            letter-spacing: 1px;
+        }
+
+        footer a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        @media (max-width: 600px) {
+            .hero-section {
+                height: auto;
+            }
+
+            .hero-section img {
+                position: relative;
+                height: auto;
+                width: 100%;
+                object-fit: contain;
+            }
+
+            .hero-text-main {
+                font-size: 14vw;
+            }
+
+            .hero-text-sub {
+                font-size: 6vw;
+            }
+
+            .magazine-section {
+                flex-direction: column;
+                height: auto;
+            }
+
+            .magazine-text,
+            .magazine-image {
+                width: 100%;
+                height: auto;
+            }
+
+            .caption {
+                text-align: left;
+                padding-left: 5%;
+                padding-right: 10%;
+                margin-bottom: 3em;
+                margin-top: 0%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main class="snap-container">
+        <!-- Hero Section -->
+        <section class="hero-section" style="height: 100vh;">
+            <img style="object-fit: cover; height: 100vh;" src="assets/DSC09910-25.webp" alt="Cover" />
+            <div class="overlay">
+                <div class="hero-text-wrapper">
+                    <!-- <div class="hero-text-main">ത്രിശ്ശൂർ പൂരം</div> -->
+                    <div class="hero-text-sub">Festive</div>
+                </div>
+            </div>
+        </section>
+        <br>
+
+        <!-- Story Section -->
+        <!-- <section class="magazine-section">
+            <div class="magazine-text">
+                <h2>Where It All Began</h2>
+                <p> ⚠️ work in progress </p>
+            </div>
+            <div class="magazine-image">
+                <img src="assets/where-it-all-began.webp" alt="Cultural Festival" />
+            </div>
+        </section>
+        <br> -->
+
+
+        <!-- February -->
+        <section class="hero-section"><img src="assets/where-it-all-began.webp" alt="Cultural Moment Varansi" />
+        </section>
+        <p class="caption">Maha Kumbh, Prayagraj - February 2025 <br>
+
+            <!-- March -->
+
+        <div class="photo-grid">
+            <img data-src="assets/DSC09814-1.webp" loading="lazy" alt="Small Image 1" />
+            <img data-src="assets/DSC09824-5.webp" loading="lazy" alt="Small Image 2" />
+            <img data-src="assets/DSC09827-1.webp" loading="lazy" alt="Small Image 3" />
+            <img data-src="assets/DSC09884-1.webp" loading="lazy" alt="Small Image 4" />
+        </div>
+        <br>
+
+        <section class="hero-section"><img src="assets/DSC09908-25.webp" alt="Cultural Moment Varansi" /></section>
+        <p class="caption">Masaan Ki Holi, Manikarnika Ghat, Varanasi — March 2025 <br>
+            Devotees gather at Manikarnika Ghat — where the living
+            celebrate Holi amidst the cremation grounds, honoring life and death as one continuum.
+        </p>
+        <br>
+
+
+        <section class="hero-section"><img data-src="assets/DSC09948-1-1.webp" alt="Cultural Moment Melur" /></section>
+        <br>
+
+        <div class="photo-grid">
+            <img data-src="assets/DSC00032-2.webp" loading="lazy" alt="Small Image 1" />
+            <img data-src="assets/DSC00020-1.webp" loading="lazy" alt="Small Image 2" />
+            <img data-src="assets/DSC00051-1.webp" loading="lazy" alt="Small Image 3" />
+            <img data-src="assets/DSC09958-2.webp" loading="lazy" alt="Small Image 4" />
+        </div>
+        <br>
+
+        <section class="hero-section"><img data-src="assets/IMG_2354-1.webp" loading="lazy"
+                alt="Cultural Moment Melur" /></section>
+        <p class="caption">Kenda Habba, Melur Village, Nilgiris — March 2025.</p>
+        <br>
+
+        <!-- May -->
+        <section class="hero-section"><img data-src="assets/DSC00239.webp" loading="lazy" alt="Trisshur Pooram Cover" />
+        </section>
+        <br>
+        <div class="photo-grid">
+            <img data-src="assets/DSC00201.webp" alt="Small Image 1" />
+            <img data-src="assets/DSC00191.webp" alt="Small Image 2" />
+            <img data-src="assets/DSC00419-3.webp" alt="Small Image 3" />
+            <img data-src="assets/IMG_1251.webp" alt="Small Image 4" />
+        </div>
+        <br>
+        <section class="hero-section"><img data-src="assets/DSC00486-25.webp" loading="lazy"
+                alt="Trisshur Pooram Cover" /></section>
+        <p class="caption">Pooram, Trisshur - May 2025</p>
+        <br>
+
+        <!-- June -->
+
+        <!-- rcb -->
+
+        <section class="hero-section"><img data-src="assets/DSC00842.webp" loading="lazy" alt="Procession Crowd" />
+        </section>
+        <br>
+        <section class="hero-section"><img data-src="assets/DSC00771.webp" loading="lazy" alt="Procession Crowd" />
+        </section>
+        <p class="caption">Victory Parade, Bengaluru - June 2025 <br>
+            RCB supporters wait for the team’s arrival after
+            their first championship win in 18 years.
+        </p>
+        <br>
+
+        <!-- 
+        <div class="image-row">
+            <section class="hero-section-side-side"><img data-src="assets/DSC00784.webp" alt="expression" /></section>
+            <section class="hero-section-side-side"><img data-src="assets/DSC00842.webp" alt="truck" /></section>
+        </div>
+        <br> -->
+
+
+        <section class="hero-section"><img data-src="assets/DSC_0283-2.webp" loading="lazy" alt="Puri" /></section>
+        <br>
+        <section class="hero-section"><img data-src="assets/DSC_0729-60.webp" loading="lazy" alt="Rath Pull" />
+        </section>
+        <p class="caption">Rath Yatra, Puri — June 2025 <br>
+            Devotees pull the massive chariot of Lord Jagannath through the streets of Puri during the annual Rath Yatra
+            festival.
+        </p>
+        <br>
+
+
+        <!-- July -->
+        <section class="hero-section"><img data-src="assets/DSC_0089.webp" loading="lazy" alt="Wedding" /></section>
+        <p class="caption">Wedding, Kilkundha Village, Nilgiris - July 2025 <br> Women from the bride’s village gather
+            around her before she’s led to the mandapa, a key
+            moment in Badaga wedding traditions.
+        </p>
+        <br>
+
+
+        <section class="hero-section"><img data-src="assets/DSC_0385.webp" loading="lazy" alt="Kodai Bison" /></section>
+        <br>
+
+        <!-- <section class="hero-section"><img data-src="assets/DSC_0450.webp" alt="Kundah Firewoods" /></section>
+        <br> -->
+
+        <section class="hero-section"><img data-src="assets/DSC_0579.webp" loading="lazy" alt="Dev Habba" /></section>
+        <br>
+
+        <section class="hero-section"><img data-src="assets/DSC_0610.webp" loading="lazy" alt="Dev Ritual" /></section>
+        <p class="caption">Dev Habba, Kilkundha Village, Nilgiris - July 2025 <br> ‘Habbas’ or festivals involve rituals
+            based on the agrarian culture of their past.
+            Badagas celebrate the festival of ‘Devhabba’, to welcome the Harvest Season.
+        </p>
+        <br>
+
+        <section class="hero-section"><img data-src="assets/DSC_0364.webp" loading="lazy" alt="Bear Temple" /></section>
+        <p class="caption">In The Nilgiris of southern India, ancient wildlife paths intersect with places of human
+            devotion. This wild sloth bear (Melursus ursinus) paused beside a small forest shrine worshipped daily by
+            local tribal communities — a space where people and wildlife live through the shared wilderness. Sloth bears
+            here are known to investigate temples for the scent of ghee used to fuel ritual diyas. As development pushes
+            further into biodiverse landscapes, encounters like this reveal the delicate balance between culture and
+            nature — and the hopeful possibility of coexistence.
+        </p>
+        <br>
+
+        <!-- August -->
+        <section class="hero-section"><img data-src="assets/IMG_0363-1.webp" loading="lazy" alt="old dilli" /></section>
+        <p class="caption">Independence Day Preparations, Old Delhi — August 2025 <br>
+            People gather outside Jama Masjid in Old Delhi as decorations and flags are set up on the eve of India’s
+            Independence Day.
+        </p>
+        <br>
+
+        <section class="hero-section"><img data-src="assets/DSC_0075-1-2.webp" loading="lazy" alt="taj mahal" />
+        </section>
+        <br>
+
+        <!-- <section class="hero-section"><img data-src="assets/DSC_0771.webp" alt="vrindhavan" /></section>
+        <br> -->
+
+        <!-- <br>
+        <div class="image-row">
+            <section class="hero-section-side-side"><img data-src="assets/DSC_0159.webp" alt="cat theppakolam" />
+            </section>
+            <section class="hero-section-side-side"><img data-src="assets/DSC_0163.webp" alt="heroine theppakolam" />
+            </section>
+        </div>
+        <br>
+        <br> -->
+
+        <section class="hero-section"><img data-src="assets/DSC_0771.webp" loading="lazy" alt="vrindhavan" /></section>
+        <p class="caption">Krishna Janmashtami, Vrindavan — August 2025 <br>
+            Women dressed as gopis dance in celebration of Lord Krishna’s birth</p>
+        <br>
+
+        <section class="hero-section"><img data-src="assets/DSC_0635-1.webp" loading="lazy" alt="rope walker" />
+        </section>
+        <br>
+
+        <section class="hero-section"><img data-src="assets/DSC09879-1.webp" loading="lazy" alt="rope walker" />
+        </section>
+        <br>
+
+        <!-- <section class="hero-section"><img data-src="assets/DSC_0613.webp" alt="ox" /></section>
+        <br> -->
+
+        <section class="hero-section"><img data-src="assets/DSC_0636.webp" loading="lazy" alt="tiger" /></section>
+        <br>
+
+        <section class="hero-section"><img data-src="assets/DSC_0028-1.webp" loading="lazy" alt="Rajbhari" /></section>
+        <br>
+
+        <section class="hero-section"><img data-src="assets/DSC_0145-1.webp" loading="lazy" alt="Vijaydhasami" />
+        </section>
+        <p class="caption">Durga Puja Visarjan, Kolkata — October 2025 <br>
+            Devotees carry a Durga idol on boats across the Hooghly River during the immersion ceremony marking the
+            final day of Durga Puja in Kolkata.</p>
+        <br>
+
+        <section class="hero-section"><img data-src="assets/DSC_0219.webp" loading="lazy" alt="wall art" /></section>
+        <br>
+
+        <!-- <section class="hero-section"><img data-src="assets/DSC00300-2.jpg" alt="mahoot" /></section>
+        <br> -->
+
+        <section class="hero-section"><img data-src="assets/DSC_0558.webp" loading="lazy" alt="mona lisa" /></section>
+        <br>
+
+        <!-- Footer -->
+        <footer>
+            © 2025 Photography Stories by <a href="https://x.com/PriyadharshanS" target="_blank">@PriyadharshanS</a>
+        </footer>
+    </main>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Get all images with data-src (after the first 3 preloaded)
+            const lazyImages = Array.from(document.querySelectorAll('img[data-src]'));
+
+            // Function to load one image
+            function loadImage(img) {
+                const src = img.dataset.src;
+                if (!src) return;
+                img.src = src;
+                img.removeAttribute('data-src');
+            }
+
+            // Start loading all lazy images immediately after first paint
+            window.requestIdleCallback
+                ? requestIdleCallback(() => lazyImages.forEach(loadImage))
+                : setTimeout(() => lazyImages.forEach(loadImage), 200);
+        });
+    </script>
+
+
+
+</body>
+
+</html>
