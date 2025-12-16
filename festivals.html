@@ -6,14 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <style>
-    /* Reset */
+    /* ================= Reset ================= */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
 
-    /* Base */
+    /* ================= Base ================= */
     body {
       background: #0e0e0e;
       color: #e6e6e6;
@@ -22,13 +22,12 @@
       overflow: hidden;
     }
 
-    /* Container */
     .container {
       width: 100vw;
       height: 100vh;
     }
 
-    /* Terminal shell */
+    /* ================= Terminal ================= */
     .terminal {
       width: 100%;
       height: 100%;
@@ -38,7 +37,6 @@
       box-shadow: 0 0 0 1px #1f1f1f;
     }
 
-    /* Header / Tabs */
     .terminal-header {
       display: flex;
       background: #1a1a1a;
@@ -62,13 +60,11 @@
       border-bottom: 2px solid #e6e6e6;
     }
 
-    /* Scrollable terminal area */
     .terminal-scroll {
       flex: 1;
       overflow-y: auto;
     }
 
-    /* Panels */
     .panel {
       display: none;
       height: 100%;
@@ -78,13 +74,13 @@
       display: block;
     }
 
-    /* Centered header content */
+    /* ================= Header Content ================= */
     .terminal-center {
       text-align: center;
-      padding-top: 50px;
+      padding-top: 48px;
     }
 
-    /* ASCII name */
+    /* ASCII */
     .s {
       white-space: pre;
       line-height: 1.05;
@@ -92,10 +88,39 @@
       text-align: center;
     }
 
-    /* Subtitle */
+    /* ================= ASCII Marquee ================= */
+    .ascii-marquee {
+      width: 100%;
+      overflow: hidden;
+      position: relative;
+      margin-bottom: 12px;
+    }
+
+    .ascii-track {
+      display: inline-block;
+      white-space: nowrap;
+      --overflow: 38ch; /* desktop safe default */
+      animation: flicker 6s infinite;
+    }
+
+    /* Flicker (all views) */
+    @keyframes flicker {
+      0%, 96%, 100% { opacity: 1; }
+      97% { opacity: 0.35; }
+      98% { opacity: 1; }
+    }
+
+    /* Marquee (mobile only) */
+    @keyframes marquee {
+      0%   { transform: translateX(0); }
+      6%   { transform: translateX(0); }     /* short pause */
+      85%  { transform: translateX(calc(-1 * var(--overflow))); }
+      100% { transform: translateX(calc(-1 * var(--overflow))); }
+    }
+
+    /* ================= Text Blocks ================= */
     .subtitle {
-      margin-top: 20px;
-      margin-bottom: 30px;
+      margin: 20px 0 30px;
     }
 
     .name {
@@ -108,7 +133,6 @@
       opacity: 0.8;
     }
 
-    /* Socials */
     .socials {
       display: flex;
       justify-content: center;
@@ -116,6 +140,7 @@
       font-size: 0.8rem;
       opacity: 0.7;
       margin-bottom: 40px;
+      flex-wrap: wrap;
     }
 
     .socials a {
@@ -128,7 +153,6 @@
       opacity: 1;
     }
 
-    /* Bullet content */
     .terminal-bullets {
       display: flex;
       justify-content: center;
@@ -143,12 +167,58 @@
       white-space: pre-wrap;
     }
 
-    /* Iframe for photography */
+    /* ================= Iframe ================= */
     .terminal-iframe {
       width: 100%;
       height: calc(100vh - 80px);
       border: none;
       background: #121212;
+    }
+
+    /* ================= Mobile ================= */
+    @media (max-width: 768px) {
+      .tab {
+        padding: 12px 16px;
+        font-size: 0.9rem;
+      }
+
+      .s {
+        font-size: 0.55rem;
+      }
+
+      .terminal-center {
+        padding: 32px 12px 0;
+      }
+
+      .terminal-body {
+        max-width: 90%;
+        font-size: 0.8rem;
+      }
+
+      .name { font-size: 1rem; }
+      .role { font-size: 0.85rem; }
+
+      .terminal-iframe {
+        height: calc(100vh - 60px);
+      }
+
+      /* Enable marquee only on mobile */
+      .ascii-track {
+        --overflow: 28ch;
+        animation:
+          flicker 6s infinite,
+          marquee 16s linear infinite;
+      }
+
+      .ascii-marquee {
+        mask-image: linear-gradient(
+          to right,
+          transparent,
+          black 8%,
+          black 92%,
+          transparent
+        );
+      }
     }
   </style>
 </head>
@@ -158,25 +228,27 @@
 <main class="container">
   <section class="terminal">
 
-    <!-- Tabs -->
     <div class="terminal-header">
       <span class="tab active" data-tab="work">Work</span>
       <span class="tab" data-tab="photo">Photography</span>
     </div>
 
-    <!-- Content -->
     <div class="terminal-scroll">
 
-      <!-- WORK PANEL -->
+      <!-- WORK -->
       <div class="panel active" data-panel="work">
         <div class="terminal-center">
 
-          <div class="s">██████╗ ██████╗ ██╗██╗   ██╗ █████╗ ██████╗ ██╗  ██╗ █████╗ ██████╗ ███████╗██╗  ██╗ █████╗ ███╗   ██╗</div>
-          <div class="s">██╔══██╗██╔══██╗██║╚██╗ ██╔╝██╔══██╗██╔══██╗██║  ██║██╔══██╗██╔══██╗██╔════╝██║  ██║██╔══██╗████╗  ██║</div>
-          <div class="s">██████╔╝██████╔╝██║ ╚████╔╝ ███████║██║  ██║███████║███████║██████╔╝███████╗███████║███████║██╔██╗ ██║</div>
-          <div class="s">██╔═══╝ ██╔══██╗██║  ╚██╔╝  ██╔══██║██║  ██║██╔══██║██╔══██║██╔══██╗╚════██║██╔══██║██╔══██║██║╚██╗██║</div>
-          <div class="s">██║     ██║  ██║██║   ██║   ██║  ██║██████╔╝██║  ██║██║  ██║██║  ██║███████║██║  ██║██║  ██║██║ ╚████║</div>
-          <div class="s">╚═╝     ╚═╝  ╚═╝╚═╝   ╚═╝   ╚═╝  ╚═╝╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝</div>
+          <div class="ascii-marquee">
+            <div class="ascii-track">
+              <div class="s">██████╗ ██████╗ ██╗██╗   ██╗ █████╗ ██████╗ ██╗  ██╗ █████╗ ██████╗ ███████╗██╗  ██╗ █████╗ ███╗   ██╗</div>
+              <div class="s">██╔══██╗██╔══██╗██║╚██╗ ██╔╝██╔══██╗██╔══██╗██║  ██║██╔══██╗██╔══██╗██╔════╝██║  ██║██╔══██╗████╗  ██║</div>
+              <div class="s">██████╔╝██████╔╝██║ ╚████╔╝ ███████║██║  ██║███████║███████║██████╔╝███████╗███████║███████║██╔██╗ ██║</div>
+              <div class="s">██╔═══╝ ██╔══██╗██║  ╚██╔╝  ██╔══██║██║  ██║██╔══██║██╔══██║██╔══██╗╚════██║██╔══██║██╔══██║██║╚██╗██║</div>
+              <div class="s">██║     ██║  ██║██║   ██║   ██║  ██║██████╔╝██║  ██║██║  ██║██║  ██║███████║██║  ██║██║  ██║██║ ╚████║</div>
+              <div class="s">╚═╝     ╚═╝  ╚═╝╚═╝   ╚═╝   ╚═╝  ╚═╝╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝</div>
+            </div>
+          </div>
 
           <div class="subtitle">
             <p class="name">Priyadharshan S</p>
@@ -202,7 +274,7 @@
         </div>
       </div>
 
-      <!-- PHOTOGRAPHY PANEL -->
+      <!-- PHOTOGRAPHY -->
       <div class="panel" data-panel="photo">
         <iframe src="festivals-root.html" class="terminal-iframe"></iframe>
       </div>
