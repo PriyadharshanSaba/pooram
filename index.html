@@ -312,16 +312,27 @@
 
     /* ---------- RESPONSIVE ---------- */
     @media (max-width: 800px) {
+      /* Every image shows in full — no crop, no zoom. */
       .opening { grid-template-columns: 1fr; }
-      .opening-image { min-height: 70vh; }
+      .opening-image { min-height: auto; order: 1; background: var(--bg); }
+      .opening-image img { width: 100%; height: auto; object-fit: contain; }
       .opening-text { padding: 4rem 1.5rem; order: 2; }
-      .opening-image { order: 1; }
-      .diptych { grid-template-columns: 1fr; gap: 0.4rem; }
-      .diptych img { height: 60vh; }
+
+      .diptych { grid-template-columns: 1fr; gap: 0.4rem; padding: 2rem 1rem; }
+      .diptych img { height: auto; object-fit: contain; }
+
       .plate { padding: 3rem 1rem; }
-      .plate.bleed .plate-frame img { height: 75vh; }
-      .hero-meta { font-size: 0.55rem; letter-spacing: 0.2em; }
-      .hero-content { padding-bottom: 10vh; }
+      .plate-frame img { max-height: none; height: auto; object-fit: contain; }
+      .plate.bleed { padding: 3rem 1rem; }
+      .plate.bleed .plate-frame img { height: auto; max-height: none; object-fit: contain; }
+      .plate.bleed .caption { padding: 1.5rem 0 0; }
+
+      /* Hero: full image visible, title sits beneath in black band */
+      .hero { height: auto; min-height: 100vh; display: flex; flex-direction: column; }
+      .hero img { position: relative; inset: auto; width: 100%; height: auto; object-fit: contain; filter: none; }
+      .hero-content { position: relative; inset: auto; padding: 3rem 1.5rem 1.5rem; flex: 1; justify-content: center; }
+      .hero-meta { position: relative; bottom: auto; left: auto; right: auto; padding: 0 1.5rem 2rem; font-size: 0.55rem; letter-spacing: 0.2em; }
+
       .essay-body p { font-size: 1.05rem; }
     }
   </style>
